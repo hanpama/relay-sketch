@@ -2,6 +2,7 @@
 
 Example of type-safe UI development with Relay + React SketchApp 👻
 
+![Screenshot](./screenshot.png)
 
 ## Get Started
 
