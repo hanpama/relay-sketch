@@ -1,0 +1,29 @@
+schema {
+  query: Query
+}
+
+type Query {
+  post: Post
+}
+
+type Post implements Node {
+  id: ID!
+  title: String!
+  author: User!
+  content: String!
+  created: String!
+  replies: ReplyConnection!
+}
+
+type ReplyConnection {
+  totalCount: Int!
+}
+
+type User implements Node {
+  id: ID!
+  username: String!
+}
+
+interface Node {
+  id: ID!
+}

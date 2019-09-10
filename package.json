@@ -1,0 +1,51 @@
+{
+  "name": "relay-sketch",
+  "version": "1.0.0",
+  "description": "",
+  "skpm": {
+    "main": "relay-sketch.sketchplugin",
+    "manifest": "./manifest.json"
+  },
+  "scripts": {
+    "build": "npm run relay:once && npm run typescript:once && skpm-build",
+    "render": "skpm-build --watch --run & npm run relay & npm run typescript",
+    "render:once": "npm run relay:once && npm run typescript:once && skpm-build --run",
+    "postinstall": "npm run build && skpm-link",
+    "typescript:once": "babel src --out-dir dist --extensions .tsx --extensions .ts --config-file ./ts.babelrc",
+    "typescript": "npm run typescript:once -- --watch",
+    "relay:once": "relay-compiler --src ./src --schema schema.graphql --artifactDirectory ./src/__relay__ --language typescript",
+    "relay": "npm run relay:once -- --watch"
+  },
+  "author": "Kyungil Choi <hanpama@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-typescript": "^7.3.3",
+    "@skpm/builder": "^0.4.0",
+    "@types/chroma-js": "^1.4.2",
+    "@types/react-sketchapp": "^0.16.0",
+    "typescript": "^3.6.2"
+  },
+  "dependencies": {
+    "@types/node": "^12.7.3",
+    "@types/react-primitives": "^0.6.2",
+    "@types/react-relay": "^5.0.0",
+    "babel-plugin-relay": "^5.0.0",
+    "chroma-js": "^2.0.6",
+    "core-js": "^2.5.7",
+    "graphql": "^14.5.4",
+    "graphql-compiler": "^1.7.0",
+    "moment": "^2.24.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.9.0",
+    "react-primitives": "^0.8.0",
+    "react-relay": "^5.0.0",
+    "react-sketchapp": "^2.1.2",
+    "react-test-renderer": "^16.9.0",
+    "relay-compiler": "^5.0.0",
+    "relay-compiler-language-typescript": "^4.7.0",
+    "to-fast-properties": "^2.0.0"
+  }
+}

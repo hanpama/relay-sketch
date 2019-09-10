@@ -1,0 +1,6 @@
+{
+  "plugins": [
+    ["relay", { "artifactDirectory": "./src/__relay__" }]
+  ],
+  "presets": ["@babel/preset-typescript"]
+}
